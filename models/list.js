@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-const List = sequelize.define('list', {
+const Checklist = sequelize.define('checklist', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -15,4 +15,4 @@ const List = sequelize.define('list', {
     }
 });
 
-module.exports = List;
+module.exports = Checklist;

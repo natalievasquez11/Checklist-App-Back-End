@@ -3,19 +3,14 @@ const express = require('express');
 const controller = require('../controllers');
 const router = express.Router();
 
-//get all todos
-router.get('/get-checklist', controller.getChecklist);
+router.get('/getChecklist', controller.getChecklist);
 
-//edit task name
-router.put('/update/:taskId', controller.editTask);
+router.post('/addTask', controller.addTask);
 
-//delete a task
-router.delete('/delete-task/:taskId', controller.deleteTask);
+router.put('/updateTask/:taskId', controller.updateTask);
 
-//add a task
-router.post('/add-task', controller.addTask);
+router.delete('/deleteTask/:taskId', controller.deleteTaskById);
 
-//delete all tasks
-router.delete('/delete-all', controller.deleteAll);
+router.delete('/deleteAll', controller.deleteAll);
 
 module.exports = router;

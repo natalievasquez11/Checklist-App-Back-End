@@ -8,7 +8,19 @@ exports.getChecklist = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
-exports.editTask = (req, res, next) => {
+exports.addTask = (req, res, next) => {
+    const taskName = req.body.task;
+    console.log(taskName);
+    List.create({
+        task: taskName
+    })
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => console.log(err));
+}
+
+exports.updateTask = (req, res, next) => {
     const taskId = req.params.taskId;
     const taskName = req.body.task;
     const taskCompleted = req.body.completed;
@@ -26,7 +38,7 @@ exports.editTask = (req, res, next) => {
         .catch(err => res.json(err));
 }
 
-exports.deleteTask = (req, res, next) => {
+exports.deleteTaskById = (req, res, next) => {
     const taskId = req.params.taskId;
     List.destroy({
         where: {
@@ -39,18 +51,6 @@ exports.deleteTask = (req, res, next) => {
         .catch((err) => {
             next(err);
         });
-}
-
-exports.addTask = (req, res, next) => {
-    const taskName = req.body.task;
-    console.log(taskName);
-    List.create({
-        task: taskName
-    })
-        .then(data => {
-            res.json(data);
-        })
-        .catch(err => console.log(err));
 }
 
 exports.deleteAll = (req, res, next) => {
