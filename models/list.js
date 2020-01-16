@@ -8,8 +8,8 @@ const Checklist = sequelize.define('checklist', {
         allowNull: false,
         primaryKey: true
     },
-    task: Sequelize.STRING,
-    completed: {
+    taskName: Sequelize.STRING,
+    taskCompleted: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
     }

@@ -9,10 +9,10 @@ exports.getChecklist = (req, res, next) => {
 };
 
 exports.addTask = (req, res, next) => {
-    const taskName = req.body.task;
+    const taskName = req.body.taskName;
     console.log(taskName);
     List.create({
-        task: taskName
+        taskName: taskName
     })
         .then(data => {
             res.json(data);
@@ -22,11 +22,11 @@ exports.addTask = (req, res, next) => {
 
 exports.updateTask = (req, res, next) => {
     const taskId = req.params.taskId;
-    const taskName = req.body.task;
-    const taskCompleted = req.body.completed;
+    const taskName = req.body.taskName;
+    const taskCompleted = req.body.taskCompleted;
     List.update({
-        task: taskName, 
-        completed: taskCompleted
+        taskName: taskName, 
+        taskCompleted: taskCompleted
     }, {
         where: {
             id: taskId
